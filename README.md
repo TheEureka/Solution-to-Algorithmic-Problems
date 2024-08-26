@@ -1,2 +1,2 @@
-# Proof-of-Algorithms
-A collection of my solutions to various algorithmic problems.
+# Solution-to-Algorithmic-Problems
+A collection of my solutions and proofs to various algorithmic problems.
