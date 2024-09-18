@@ -50,7 +50,7 @@ produces the lexicographically largest answer.
 
   Note that if we assume that during the process we don't face the scenario where when we want to delete element $i$, there's no available value in the range $[a_i + 1, a_i + i]$, then the resultant answer array is the same for all orders of deletions.
 
-  This is because consider all values of $a_i + i$, which is the best choice for each $i$ at the beginning. Of course, there might be duplicates, so we have to continue decreasing the values of those duplicated $a_i + i$ until no more duplicates are made. This actually fixes the final answer. For instance, if the values of $a_i + i$ gives one $2$ and three $5$'s, it apparently only corresponds to the answer $2, 3, 4, 5$, where one original $5$ is decreased by $1$, and the other repeated $5$ is decreased by $2$.
+  This is proved by considering all values of $a_i + i$, which is the best choice for each $i$ at the beginning. Of course, there might be duplicates, so we have to continue decreasing the values of those duplicated $a_i + i$ until no more duplicates are made. This actually fixes the final answer. For instance, if the values of $a_i + i$ gives one $2$ and three $5$'s, it apparently only corresponds to the answer $2, 3, 4, 5$, where one original $5$ is decreased by $1$, and the other repeated $5$ is decreased by $2$.
 
   Moreover, when such a collision scenario occurs, the answer array that is decreased in length apparently doesn't grow lexicographically larger, because collisions are equivalent to removing some answers from the optimal answer array.
 
