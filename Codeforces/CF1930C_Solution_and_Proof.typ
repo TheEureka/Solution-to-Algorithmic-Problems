@@ -35,7 +35,7 @@ We now introduce and prove an interesting claim.
 
   Notice how the second step doesn't affect the previous _good_ array, and how $c_(n + 1)$ is now equal to $x$. The the _good_ array of length $n + 1$ formed by the given _good_ array of length $n$ appending $x$ is achievable.
 
-  Thus, by induction, for all positive integer $n$, all _good_arrays_ of length $n$ can be obtained in the process described in the problem.
+  Thus, by induction, for all positive integer $n$, all _good_ arrays of length $n$ can be obtained in the process described in the problem.
 ]
 
 We claim that the algorithm: 
@@ -48,11 +48,11 @@ produces the lexicographically largest answer.
 
   So what now remains to be proved is why the order of iteration from $1$ to $i$ gives the lexicographically largest answer.
 
-  Note that if we don't fix the order of deletion, but assume that during the process we don't face the scenario where when we want to delete element $i$, there's no available value in the range $[a_i + 1, a_i + i]$, then the resultant answer array is the same for all these order of deletions.
+  Note that if we assume that during the process we don't face the scenario where when we want to delete element $i$, there's no available value in the range $[a_i + 1, a_i + i]$, then the resultant answer array is the same for all orders of deletions.
 
   This is because consider all values of $a_i + i$, which is the best choice for each $i$ at the beginning. Of course, there might be duplicates, so we have to continue decreasing the values of those duplicated $a_i + i$ until no more duplicates are made. This actually fixes the final answer. For instance, if the values of $a_i + i$ gives one $2$ and three $5$'s, it apparently only corresponds to the answer $2, 3, 4, 5$, where one original $5$ is decreased by $1$, and the other repeated $5$ is decreased by $2$.
 
-  Moreover, when such a collision scenario occurs, the answer array that is decreased in length apparently doesn't grow lexicographically larger. Because collisions are equivalent to removing some answers from the optimal answer array,
+  Moreover, when such a collision scenario occurs, the answer array that is decreased in length apparently doesn't grow lexicographically larger, because collisions are equivalent to removing some answers from the optimal answer array.
 
   Thus, we now only have to show that our algorithm actually gives the longest possible answer sequence.
 
