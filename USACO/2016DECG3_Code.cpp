@@ -45,11 +45,6 @@ int startx, starty, endx, endy;
 deque<node> q;
 
 void update(int new_dir, int x, int y, int w) {
-    //dbg(new_dir);
-    //dbg(x);
-    //dbg(y);
-    //dbg(w);
-    //cout << "####\n";
     auto it = mpx[endx].begin();
     if (new_dir == 0) {
         it = mpx[x].upper_bound(y);
@@ -66,10 +61,7 @@ void update(int new_dir, int x, int y, int w) {
         }
     }
     else if (new_dir == 1) {
-        //dbg(x);
-        //dbg(y);
         it = mpy[y].upper_bound(x);
-        //dbg(*it);
         if (it != mpy[y].end()) {
             if (dis[mk(*it, y)] > dis[mk(x, y)] + w) {
                 dis[mk(*it, y)] = dis[mk(x, y)] + w;
@@ -106,28 +98,10 @@ bool flag = false;
 
 
 void bfs(pii start) {
-    auto it = mpx[start.first].upper_bound(start.second);
-    if (it != mpx[start.first].end()) {
-        q.pb((node){mk(start.first, *it), 0});
-        dis[mk(start.first, *it)] = 0;
-    }
-    it = mpy[start.second].upper_bound(start.first);
-    if (it != mpy[start.second].end()) {
-        q.pb((node){mk(*it, start.second), 1});
-        dis[mk(*it, start.second)] = 0;
-    }
-    it = mpx[start.first].lower_bound(start.second);
-    if (it != mpx[start.first].begin()) {
-        it--;
-        q.pb((node){mk(start.first, *it), 2});
-        dis[mk(start.first, *it)] = 0;
-    }
-    it = mpy[start.second].lower_bound(start.first);
-    if (it != mpy[start.second].begin()) {
-        it--;
-        q.pb((node){mk(*it, start.second), 3});
-        dis[mk(*it, start.second)] = 0;
-    }
+    q.pb((node){start, 0});
+    q.pb((node){start, 1});
+    q.pb((node){start, 2});
+    q.pb((node){start, 3});
 
     dis[start] = 0;
 
@@ -135,13 +109,7 @@ void bfs(pii start) {
     while (!q.empty()) {
         node u = q.front(); q.pop_front();
         int x = u.cord.first, y = u.cord.second, dir = u.dir;
-        //dbg(x);
-        //dbg(y);
-        //dbg(dir);
-        //cout << "--------\n";
-
         if (x == endx && y == endy) {
-            //dbg("hello");
             flag = true;
             cout << dis[mk(x, y)] << endl;
             return;
@@ -165,7 +133,7 @@ void bfs(pii start) {
 
 
 int main() {
-    IOS();
+    IOS("lasers");
     cin >> n;
     cin >> startx >> starty >> endx >> endy;
     mpx[startx].insert(starty);
