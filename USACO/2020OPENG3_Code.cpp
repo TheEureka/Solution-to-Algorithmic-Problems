@@ -83,7 +83,7 @@ ll n, m;
 ll dp[maxn];
 
 int main() {
-    IOS();
+    IOS(); // I can't submit using read-from-and-write-to-file for some weird reason. Thus, I'm using stdin and stdout here.
     cin >> n >> m;
     euler(n);
     forn(i, n + 1) dp[i] = 1;
