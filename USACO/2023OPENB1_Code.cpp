@@ -81,6 +81,7 @@ int main() {
             r1 += (r - l + 1);
         }
         else {
+            // Every number in a given range with a "step" of 2 can be reached -- conclusion arrived by considering a starting state and observing the delta each change causes
             int len = r - l + 1;
             if (s[l - 1] == s[r + 1]) {
                 if (len % 2 == 1) r2 += (len + 1);
@@ -92,6 +93,11 @@ int main() {
             }
         }
     }
+    /*
+    Now we know that the amount added is equal to l2 + (x + 2 * d), where 0 <= x <= r1 and 0 <= d <= (r2 - l2) / 2, we can further conclude that
+    1. if r1 == 0, then the amount added is in the set {l2, l2 + 2, .... r2}
+    2. otherwise, the amount added can be any integer in the range [l2, r1 + r2], because (x + 2y) can attain any integer in the range [0, r1 + (r2 - l2)].
+    */
     if (r1 == 0) {
         cout << (r2 - l2) / 2 + 1 << endl;
         inc(i, ans + l2, ans + r2, 2) {
